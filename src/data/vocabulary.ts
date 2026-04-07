@@ -3,7 +3,7 @@ import type { VocabEntry } from "@/lib/types";
 /**
  * Sole word list for this app — matches the class sheet
  * **VOCAB "How to Buy a Gun in 15 Countries"** (29 entries).
- * English/German columns follow that handout; sentences are B2/C1 level for practice.
+ * Sentence models use plain B2 English/German: the target word is used clearly, not fancy phrasing.
  */
 export const VOCABULARY: VocabEntry[] = [
   {
@@ -16,9 +16,9 @@ export const VOCABULARY: VocabEntry[] = [
       gap: "In many jurisdictions, you are required ___ through regulated channels rather than via informal networks.",
       gapAnswer: "to obtain a gun",
       modelEnglish:
-        "In many jurisdictions, you are required to obtain a gun through regulated channels rather than via informal networks.",
+        "In many countries you have to obtain a gun through official steps, not through private or informal deals.",
       modelGerman:
-        "In zahlreichen Rechtsordnungen muss man eine Waffe über regulierte Wege bekommen und nicht über informelle Netzwerke.",
+        "In vielen Ländern muss man eine Waffe auf offiziellem Weg bekommen, nicht privat oder informell.",
       meaningOptionsDe: [
         "Waffe bekommen",
         "Waffe führen",
@@ -39,9 +39,9 @@ export const VOCABULARY: VocabEntry[] = [
       gap: "Public opinion remains split over who ought to be allowed ___ in densely populated areas.",
       gapAnswer: "to carry a gun",
       modelEnglish:
-        "Public opinion remains split over who ought to be allowed to carry a gun in densely populated areas.",
+        "People disagree about who should be allowed to carry a gun in busy cities and crowded places.",
       modelGerman:
-        "Die öffentliche Meinung ist gespalten, wem erlaubt sein soll, eine Waffe in dicht besiedelten Gebieten zu führen bzw. zu tragen.",
+        "Die Leute sind uneinig, wer eine Waffe in vollen Städten und an vollen Orten führen bzw. tragen darf.",
       meaningOptionsDe: [
         "Waffe führen / tragen",
         "Waffe bekommen",
@@ -62,9 +62,9 @@ export const VOCABULARY: VocabEntry[] = [
       gap: "Even when ownership is broadly permitted, acquiring a ___ still tends to involve waiting periods and paperwork.",
       gapAnswer: "firearm",
       modelEnglish:
-        "Even when ownership is broadly permitted, acquiring a firearm still tends to involve waiting periods and paperwork.",
+        "Even where guns are legal, getting a firearm usually means waiting and filling in forms.",
       modelGerman:
-        "Selbst wenn der Waffenbesitz weitgehend erlaubt ist, ist der Erwerb einer Schusswaffe meist mit Wartezeiten und Bürokratie verbunden.",
+        "Selbst wo Waffen erlaubt sind, braucht man für eine Schusswaffe meist Wartezeit und Formulare.",
       meaningOptionsDe: [
         "Schusswaffe",
         "Schutzweste",
@@ -86,9 +86,9 @@ export const VOCABULARY: VocabEntry[] = [
       gapAnswer: "handgun",
       gapAliases: ["pistol", "handgun / pistol"],
       modelEnglish:
-        "Compared with long guns, a handgun / pistol is inherently easier to conceal, which explains the stricter scrutiny.",
+        "A handgun / pistol is easier to hide than a long gun, so the rules are often stricter.",
       modelGerman:
-        "Im Vergleich zu Langwaffen lässt sich eine Handfeuerwaffe von Natur aus leichter verbergen, was die schärfere Kontrolle erklärt.",
+        "Eine Handfeuerwaffe lässt sich leichter verstecken als eine Langwaffe, deshalb sind die Regeln oft strenger.",
       meaningOptionsDe: [
         "Handfeuerwaffe",
         "Schusswaffe",
@@ -109,9 +109,9 @@ export const VOCABULARY: VocabEntry[] = [
       gap: "Parliamentarians often treat ___ firearms as a separate category deserving tighter restrictions.",
       gapAnswer: "semiautomatic",
       modelEnglish:
-        "Parliamentarians often treat semiautomatic firearms as a separate category deserving tighter restrictions.",
+        "Lawmakers often treat semiautomatic guns as a special group with harder rules.",
       modelGerman:
-        "Parlamentarier behandeln halbautomatische Schusswaffen häufig als eigene Kategorie, die strengere Beschränkungen verdient.",
+        "Gesetzgeber behandeln halbautomatische Waffen oft als eigene Gruppe mit strengeren Regeln.",
       meaningOptionsDe: [
         "Halbautomatisch",
         "Vollautomatisch",
@@ -132,9 +132,9 @@ export const VOCABULARY: VocabEntry[] = [
       gap: "For regulated hunting, a ___ may be issued only after competence and storage rules have been verified.",
       gapAnswer: "rifle",
       modelEnglish:
-        "For regulated hunting, a rifle may be issued only after competence and storage rules have been verified.",
+        "For hunting you may get a rifle only after they check your skills and how you store the weapon.",
       modelGerman:
-        "Für die Jagd unter Aufsicht darf ein Gewehr erst ausgegeben werden, nachdem Sachkunde und Aufbewahrungsregeln geprüft wurden.",
+        "Für die Jagd bekommt man ein Gewehr erst, wenn Sachkunde und Aufbewahrung geprüft sind.",
       meaningOptionsDe: ["Gewehr", "Pistole", "Messer", "Bogen"],
       ownSentenceHint: "Link hunting, licensing, and prerequisites.",
       difficulty: 2,
@@ -150,9 +150,9 @@ export const VOCABULARY: VocabEntry[] = [
       gap: "A violent ___ on your record is generally enough for licensing boards to reject the application.",
       gapAnswer: "conviction",
       modelEnglish:
-        "A violent conviction on your record is generally enough for licensing boards to reject the application.",
+        "A violent conviction on your record is usually enough for them to refuse a gun licence.",
       modelGerman:
-        "Eine Verurteilung wegen Gewalttaten reicht in der Regel aus, damit Gremien den Antrag ablehnen.",
+        "Eine Verurteilung wegen Gewalt reicht meist, damit man keine Waffenlizenz bekommt.",
       meaningOptionsDe: [
         "Verurteilung",
         "Überprüfung",
@@ -173,9 +173,9 @@ export const VOCABULARY: VocabEntry[] = [
       gap: "Across party lines, ___ are still viewed as the bare minimum before any weapon changes hands.",
       gapAnswer: "background checks",
       modelEnglish:
-        "Across party lines, background checks are still viewed as the bare minimum before any weapon changes hands.",
+        "Most people agree that background checks are the least you should do before a gun is sold.",
       modelGerman:
-        "Parteiübergreifend gelten Überprüfungen des kriminellen Hintergrunds als Mindeststandard, bevor eine Waffe den Besitzer wechselt.",
+        "Die meisten sagen, eine Überprüfung des kriminellen Hintergrunds gehört dazu, bevor eine Waffe verkauft wird.",
       meaningOptionsDe: [
         "Überprüfung des kriminellen Hintergrunds",
         "Einzelhandelsgeschäft",
@@ -197,9 +197,9 @@ export const VOCABULARY: VocabEntry[] = [
       gapAnswer: "criminal record",
       gapAliases: ["record", "(criminal) record"],
       modelEnglish:
-        "Anything that surfaces on your (criminal) record can tip the balance against you, even when the incident was years ago.",
+        "Something bad on your (criminal) record can still count against you years later.",
       modelGerman:
-        "Alles, was im Strafregister bzw. in der Aufzeichnung auftaucht, kann zum Ausschlag gegen Sie werden, selbst wenn die Sache Jahre zurückliegt.",
+        "Etwas Schlechtes in der (Strafregister-)Aufzeichnung kann Jahre später noch schaden.",
       meaningOptionsDe: [
         "(Strafregisterauszug) Aufzeichnung",
         "Verurteilung",
@@ -220,9 +220,9 @@ export const VOCABULARY: VocabEntry[] = [
       gap: "Before a licence is granted, your file undergoes a meticulous ___ of supporting evidence.",
       gapAnswer: "review",
       modelEnglish:
-        "Before a licence is granted, your file undergoes a meticulous review of supporting evidence.",
+        "Before you get a licence, they do a careful review of your documents.",
       modelGerman:
-        "Bevor eine Lizenz erteilt wird, unterzieht man die Akte einer sorgfältigen Überprüfung der Belege.",
+        "Bevor du die Lizenz bekommst, gibt es eine sorgfältige Überprüfung deiner Unterlagen.",
       meaningOptionsDe: [
         "Überprüfung",
         "Verurteilung",
@@ -244,9 +244,9 @@ export const VOCABULARY: VocabEntry[] = [
       gapAnswer: "to pass a check",
       gapAliases: ["pass a check"],
       modelEnglish:
-        "First-time buyers are normally expected to pass a check before the transaction can be finalised.",
+        "You normally have to pass a check before you can finish buying the gun.",
       modelGerman:
-        "Erstkäufer müssen in der Regel eine Überprüfung bestehen, bevor der Kauf abgeschlossen werden kann.",
+        "Meist musst du eine Überprüfung bestehen, bevor du den Kauf abschließen kannst.",
       meaningOptionsDe: [
         "Eine Überprüfung bestehen",
         "Eine Waffe verkaufen",
@@ -267,9 +267,9 @@ export const VOCABULARY: VocabEntry[] = [
       gap: "___ in an applicant's history is routinely treated as a decisive bar to obtaining weapons.",
       gapAnswer: "domestic violence",
       modelEnglish:
-        "Domestic violence in an applicant's history is routinely treated as a decisive bar to obtaining weapons.",
+        "Domestic violence in your past often stops you from getting a gun.",
       modelGerman:
-        "Häusliche Gewalt in der Vorgeschichte eines Antragstellers gilt routinemäßig als schwerwiegendes Hindernis für den Waffenerwerb.",
+        "Häusliche Gewalt in der Vergangenheit verhindert oft, dass man eine Waffe bekommt.",
       meaningOptionsDe: [
         "Häusliche Gewalt",
         "Öffentliche Debatte",
@@ -291,9 +291,9 @@ export const VOCABULARY: VocabEntry[] = [
       gapAnswer: "accredited hunting / shooting club",
       gapAliases: ["accredited shooting club", "accredited hunting club"],
       modelEnglish:
-        "Membership of an accredited hunting / shooting club is sometimes cited as evidence that the applicant has received structured training.",
+        "Being in an accredited hunting / shooting club can show you had proper training.",
       modelGerman:
-        "Die Mitgliedschaft in einem anerkannten Schießclub wird mitunter als Nachweis für eine strukturierte Ausbildung angeführt.",
+        "Mitgliedschaft in einem anerkannten Schießclub kann zeigen, dass man richtig trainiert wurde.",
       meaningOptionsDe: [
         "Anerkannter Schießclub",
         "Einzelhandelsgeschäft",
@@ -315,9 +315,9 @@ export const VOCABULARY: VocabEntry[] = [
       gapAnswer: "to vouch for sb",
       gapAliases: ["to vouch for somebody", "to vouch for someone"],
       modelEnglish:
-        "A referee may be asked whether they are prepared to vouch for sb before the panel delivers its ruling.",
+        "Someone on the form may have to vouch for sb before you get the licence.",
       modelGerman:
-        "Eine Referenzperson wird möglicherweise gefragt, ob sie bereit ist, für jemanden zu bürgen, bevor das Gremium entscheidet.",
+        "Jemand muss auf dem Formular vielleicht für jemanden bürgen, bevor du die Lizenz bekommst.",
       meaningOptionsDe: [
         "für jem. bürgen",
         "jem. durchsuchen",
@@ -338,9 +338,9 @@ export const VOCABULARY: VocabEntry[] = [
       gap: "Inconsistent paperwork alone can be enough ___ for investigators long before charges are filed.",
       gapAnswer: "to raise red flags",
       modelEnglish:
-        "Inconsistent paperwork alone can be enough to raise red flags for investigators long before charges are filed.",
+        "Small mistakes in the papers can raise red flags for the police early on.",
       modelGerman:
-        "Schon widersprüchliche Unterlagen können bei Ermittlern die Alarmglocken läuten lassen, lange bevor Anklagen erhoben werden.",
+        "Kleine Fehler in den Unterlagen können bei der Polizei früh die Alarmglocken läuten lassen.",
       meaningOptionsDe: [
         "Die Alarmglocken läuten",
         "Die Lizenz erteilen",
@@ -361,9 +361,9 @@ export const VOCABULARY: VocabEntry[] = [
       gap: "Whenever regulation tightens, compliance consulting often turns into a ___ almost overnight.",
       gapAnswer: "thriving business",
       modelEnglish:
-        "Whenever regulation tightens, compliance consulting often turns into a thriving business almost overnight.",
+        "When the rules get stricter, safety training can turn into a thriving business.",
       modelGerman:
-        "Verschärft sich die Regulierung, wird aus Compliance-Beratung nicht selten fast über Nacht ein blühendes Geschäft.",
+        "Wenn die Regeln strenger werden, kann Sicherheitstraining zu einem blühenden Geschäft werden.",
       meaningOptionsDe: [
         "Blühendes Geschäft",
         "Strafregister",
@@ -384,9 +384,9 @@ export const VOCABULARY: VocabEntry[] = [
       gap: "Even in a licensed ___, clerks must follow strict age-verification and logging procedures.",
       gapAnswer: "retail store",
       modelEnglish:
-        "Even in a licensed retail store, clerks must follow strict age-verification and logging procedures.",
+        "Even in a licensed retail store, staff must check age and write it down.",
       modelGerman:
-        "Selbst in einem lizenzierten Einzelhandelsgeschäft müssen Verkäufer strikte Alterskontrollen und Protokollierungsvorschriften einhalten.",
+        "Selbst in einem lizenzierten Einzelhandelsgeschäft müssen die Leute das Alter prüfen und eintragen.",
       meaningOptionsDe: [
         "Einzelhandelsgeschäft",
         "Schießclub",
@@ -408,9 +408,9 @@ export const VOCABULARY: VocabEntry[] = [
       gapAnswer: "mental health",
       gapAliases: ["mental illness", "mental health / illness"],
       modelEnglish:
-        "Lawmakers still struggle with how mental health / illness disclosures should influence risk assessments without fuelling stigma.",
+        "Politicians still discuss how mental health / illness should affect the checks without unfair labels.",
       modelGerman:
-        "Gesetzgeber ringen weiter damit, wie Angaben zu geistiger Gesundheit bzw. Krankheit die Risikobewertung beeinflussen sollen, ohne Stigma zu verstärken.",
+        "Politiker diskutieren noch, wie geistige Gesundheit / Krankheit die Prüfung beeinflussen soll, ohne unfair zu bewerten.",
       meaningOptionsDe: [
         "Geistige Gesundheit / Krankheit",
         "Häusliche Gewalt",
@@ -432,9 +432,9 @@ export const VOCABULARY: VocabEntry[] = [
       gapAnswer: "safe gun storage",
       gapAliases: ["gun storage", "(safe) gun storage"],
       modelEnglish:
-        "Statutes increasingly insist on (safe) gun storage at home, especially where minors are present.",
+        "Laws ask more and more for (safe) gun storage at home, especially if children live there.",
       modelGerman:
-        "Gesetze verlangen zunehmend eine (sichere) Verwahrung von Waffen zu Hause, vor allem wenn Minderjährige im Haushalt leben.",
+        "Gesetze verlangen öfter eine (sichere) Verwahrung von Waffen zu Hause, besonders wenn Kinder da wohnen.",
       meaningOptionsDe: [
         "(sichere) Verwahrung von Waffen",
         "Einzelhandelsgeschäft",
@@ -456,9 +456,9 @@ export const VOCABULARY: VocabEntry[] = [
       gapAnswer: "to store smth.",
       gapAliases: ["to store something", "store something"],
       modelEnglish:
-        "Trainees must demonstrate that they know how to store smth. in line with statutory guidance.",
+        "You must show you know how to store smth. the right way under the rules.",
       modelGerman:
-        "Auszubildende müssen zeigen, dass sie wissen, wie man etwas gemäß den behördlichen Vorgaben verwahrt.",
+        "Du musst zeigen, dass du weißt, wie man etwas nach den Regeln verwahrt.",
       meaningOptionsDe: [
         "Etw. Verwahren",
         "Etw. verkaufen",
@@ -479,9 +479,9 @@ export const VOCABULARY: VocabEntry[] = [
       gap: "On many ranges, firearms must be left in a secure ___ until the instructor calls you forward.",
       gapAnswer: "locker",
       modelEnglish:
-        "On many ranges, firearms must be left in a secure locker until the instructor calls you forward.",
+        "On many ranges you leave guns in a locker until it is your turn.",
       modelGerman:
-        "Auf vielen Schießständen müssen Waffen in einem sicheren Spind bzw. Schließfach bleiben, bis der Trainer sie abruft.",
+        "Auf vielen Schießständen legt man die Waffen in einen Spind oder ein Schließfach, bis man dran ist.",
       meaningOptionsDe: [
         "Spind, Schließfach",
         "Schusswaffe",
@@ -502,9 +502,9 @@ export const VOCABULARY: VocabEntry[] = [
       gap: "Best practice dictates that ___ be kept apart from the weapons themselves whenever they are not in use.",
       gapAnswer: "ammunition",
       modelEnglish:
-        "Best practice dictates that ammunition be kept apart from the weapons themselves whenever they are not in use.",
+        "You should keep ammunition away from the guns when you are not using them.",
       modelGerman:
-        "Gute Praxis verlangt, Munition getrennt von den Schusswaffen aufzubewahren, solange sie nicht benutzt werden.",
+        "Man soll Munition getrennt von den Waffen aufbewahren, wenn man sie nicht benutzt.",
       meaningOptionsDe: ["Munition", "Lizenz", "Verwahrung", "Durchsuchung"],
       ownSentenceHint: "Safety separation rule.",
       difficulty: 2,
@@ -525,9 +525,9 @@ export const VOCABULARY: VocabEntry[] = [
         "inspections",
       ],
       modelEnglish:
-        "Holders of licences should anticipate (un)announced inspections whose purpose is to verify ongoing compliance.",
+        "If you have a licence, expect (un)announced inspections to see if you follow the rules.",
       modelGerman:
-        "Lizenzinhaber sollten mit (un)angemeldeten Durchsuchungen rechnen, deren Zweck die Überprüfung der fortlaufenden Einhaltung ist.",
+        "Mit einer Lizenz muss man mit (un)angemeldeten Durchsuchungen rechnen, ob man die Regeln einhält.",
       meaningOptionsDe: [
         "(un)angemeldete Durchsuchung",
         "Hintergrundprüfung",
@@ -549,9 +549,9 @@ export const VOCABULARY: VocabEntry[] = [
       gapAnswer: "to inspect smth.",
       gapAliases: ["to inspect something"],
       modelEnglish:
-        "Provided statutory thresholds are met, inspectors retain the authority to inspect smth. on site.",
+        "If the law allows it, inspectors may inspect smth. at your place.",
       modelGerman:
-        "Sind die gesetzlichen Voraussetzungen erfüllt, behalten sich Prüfer das Recht vor, etwas vor Ort zu durchsuchen.",
+        "Wenn das Gesetz es erlaubt, dürfen Prüfer etwas bei dir durchsuchen.",
       meaningOptionsDe: [
         "Etw. durchsuchen",
         "Etw. verkaufen",
@@ -573,9 +573,9 @@ export const VOCABULARY: VocabEntry[] = [
       gapAnswer: "diligence",
       gapAliases: ["diligent", "diligence / diligent"],
       modelEnglish:
-        "The oversight body singled out the clerk's diligence / diligent work in reconciling contradictory entries across databases.",
+        "The report praised the clerk's diligence / diligent work on the files.",
       modelGerman:
-        "Die Aufsichtsbehörde hob die Sorgfalt bzw. das eifrige, sorgfältige Vorgehen der Sachbearbeiterin hervor, widersprüchliche Einträge abzugleichen.",
+        "Der Bericht lobte die Sorgfalt / das sorgfältige Arbeiten der Sachbearbeiterin mit den Akten.",
       meaningOptionsDe: [
         "Eifer/Sorgfalt – eifrig/sorgfältig",
         "Häusliche Gewalt",
@@ -597,9 +597,9 @@ export const VOCABULARY: VocabEntry[] = [
       gapAnswer: "certificate",
       gapAliases: ["to certify smth. / certificate", "a certificate"],
       modelEnglish:
-        "Graduates leave with a certificate—the standard way to certify smth. such as completed training hours for the authorities.",
+        "After the course you get a certificate; that is how you certify smth. like your hours for the office.",
       modelGerman:
-        "Absolventen erhalten ein Zertifikat – üblicherweise die Art, etwas wie absolvierte Kursstunden gegenüber Behörden zu belegen.",
+        "Nach dem Kurs bekommst du ein Zertifikat; so belegst du z. B. deine Stunden bei der Behörde.",
       meaningOptionsDe: [
         "Etw. belegen / Zertifikat",
         "Etw. durchsuchen",
@@ -621,9 +621,9 @@ export const VOCABULARY: VocabEntry[] = [
       gapAnswer: "permit",
       gapAliases: ["permit / to permit smth."],
       modelEnglish:
-        "A valid permit signals that the state will permit smth. it would otherwise prohibit under the same statute.",
+        "A valid permit means the state will permit smth. that the same law would ban without it.",
       modelGerman:
-        "Eine gültige Erlaubnis signalisiert, dass der Staat etwas erlaubt, was er ohne diese Erlaubnis nach demselben Gesetz verbieten würde.",
+        "Eine gültige Erlaubnis heißt: Der Staat erlaubt etwas, was er ohne sie nach demselben Gesetz verbieten würde.",
       meaningOptionsDe: [
         "Erlaubnis / etw. erlauben",
         "Verurteilung",
@@ -645,9 +645,9 @@ export const VOCABULARY: VocabEntry[] = [
       gapAnswer: "outnumber smth.",
       gapAliases: ["to outnumber smth.", "outnumber"],
       modelEnglish:
-        "Survey data suggest that registered firearms may already outnumber smth. like illicit stockpiles in certain regions.",
+        "Some studies say legal guns may already outnumber smth. like illegal stocks in that area.",
       modelGerman:
-        "Umfragedaten legen nahe, dass registrierte Schusswaffen etwa illegale Bestände in manchen Regionen bereits zahlenmäßig übertreffen.",
+        "Manche Studien sagen, legale Waffen übertreffen illegale Bestände in dieser Gegend schon zahlenmäßig.",
       meaningOptionsDe: [
         "zahlenmäßig übertreffen",
         "etw. durchsuchen",
@@ -668,9 +668,9 @@ export const VOCABULARY: VocabEntry[] = [
       gap: "Guidance documents reiterate the obligation ___ whenever children or vulnerable adults share the household.",
       gapAnswer: "to keep a gun safely",
       modelEnglish:
-        "Guidance documents reiterate the obligation to keep a gun safely whenever children or vulnerable adults share the household.",
+        "The leaflet says again that you must keep a gun safely if children live with you.",
       modelGerman:
-        "Leitfaden betonen die Pflicht, eine Waffe sicher zu verwahren, sobald Kinder oder schutzbedürftige Erwachsene im Haushalt leben.",
+        "Der Merkzettel sagt nochmal, dass man eine Waffe sicher verwahren muss, wenn Kinder im Haushalt leben.",
       meaningOptionsDe: [
         "Waffe sicher verwahren",
         "Waffe öffentlich führen",
