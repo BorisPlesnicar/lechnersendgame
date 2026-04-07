@@ -18,22 +18,18 @@ body {
 
 html.dark body {
   background-color: #09090b;
-  background-image: radial-gradient(
-    100% 80% at 50% -30%,
-    rgb(45 212 191 / 0.12),
-    transparent 55%
-  );
+  background-image:
+    radial-gradient(120% 90% at 50% -35%, rgb(45 212 191 / 0.14), transparent 55%),
+    radial-gradient(80% 50% at 100% 50%, rgb(99 102 241 / 0.06), transparent 45%);
   background-attachment: fixed;
   color: #fafafa;
 }
 
 html.light body {
   background-color: #f1f5f9;
-  background-image: radial-gradient(
-    100% 70% at 50% -25%,
-    rgb(13 148 136 / 0.08),
-    transparent 50%
-  );
+  background-image:
+    radial-gradient(110% 80% at 50% -30%, rgb(13 148 136 / 0.1), transparent 52%),
+    radial-gradient(70% 45% at 100% 40%, rgb(99 102 241 / 0.05), transparent 40%);
   background-attachment: fixed;
   color: #0f172a;
 }
@@ -44,4 +40,61 @@ html.light body {
 
 html.light ::selection {
   background-color: rgb(13 148 136 / 0.22);
+}
+
+/* 3D flashcard */
+.perspective-card {
+  perspective: 1200px;
+}
+
+.flip-track {
+  transform-style: preserve-3d;
+  transition: transform 0.55s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.flip-track.is-flipped {
+  transform: rotateY(180deg);
+}
+
+.flip-face {
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+
+.flip-face-back {
+  transform: rotateY(180deg);
+}
+
+@keyframes success-pop {
+  0% {
+    transform: scale(1);
+    box-shadow: 0 0 0 0 rgb(16 185 129 / 0);
+  }
+  35% {
+    transform: scale(1.01);
+    box-shadow: 0 0 0 4px rgb(16 185 129 / 0.12);
+  }
+  100% {
+    transform: scale(1);
+    box-shadow: 0 0 0 0 rgb(16 185 129 / 0);
+  }
+}
+
+.success-flash {
+  animation: success-pop 0.55s ease-out;
+}
+
+@keyframes copy-toast-in {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.copy-toast {
+  animation: copy-toast-in 0.25s ease-out;
 }
