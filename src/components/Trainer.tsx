@@ -2,8 +2,10 @@
 
 import {
   Check,
+  ChevronLeft,
   ChevronRight,
   Copy,
+  Eye,
   Flame,
   Keyboard,
   Layers,
@@ -12,14 +14,16 @@ import {
   RotateCcw,
   Sparkles,
   Sun,
+  Trophy,
 } from "lucide-react";
-import { useCallback, useEffect, useLayoutEffect, useState } from "react";
+import { useCallback, useEffect, useLayoutEffect, useMemo, useState } from "react";
 import { VOCABULARY } from "@/data/vocabulary";
 import type { VocabEntry } from "@/lib/types";
 import { loadDaily, loadStreak, saveDaily, touchStreak } from "@/lib/sessionStats";
 import type { DailyStats } from "@/lib/sessionStats";
 import { translationMatches } from "@/lib/text-match";
 import { readTheme, toggleTheme, type Theme } from "@/lib/theme";
+import { loadMastery, toggleMastery, type MasteryMap } from "@/lib/mastery";
 
 type Mode = "cards" | "type" | "sentence";
 
@@ -43,22 +47,23 @@ const modes: {
   { id: "sentence", label: "Sentence", hint: "German prompt → English", Icon: MessageSquare },
 ];
 
-function ProgressRing({ progress, label }: { progress: number; label: string }) {
+function ProgressRing({
+  deckProgress,
+  masteryProgress,
+  label,
+}: {
+  deckProgress: number;
+  masteryProgress: number;
+  label: string;
+}) {
   const r = 38;
   const c = 2 * Math.PI * r;
-  const p = Math.min(1, Math.max(0, progress));
-  const dash = c * (1 - p);
+  const deck = Math.min(1, Math.max(0, deckProgress));
+  const mastery = Math.min(1, Math.max(0, masteryProgress));
   return (
     <div className="relative flex size-[5.25rem] shrink-0 items-center justify-center" aria-hidden>
       <svg className="size-full -rotate-90" viewBox="0 0 88 88">
-        <circle
-          cx="44"
-          cy="44"
-          r={r}
-          fill="none"
-          className="stroke-zinc-200/90 dark:stroke-zinc-700/90"
-          strokeWidth="6"
-        />
+        <circle cx="44" cy="44" r={r} fill="none" className="stroke-zinc-200/90 dark:stroke-zinc-700/90" strokeWidth="6" />
         <circle
           cx="44"
           cy="44"
@@ -68,13 +73,24 @@ function ProgressRing({ progress, label }: { progress: number; label: string }) 
           strokeWidth="6"
           strokeLinecap="round"
           strokeDasharray={c}
-          strokeDashoffset={dash}
+          strokeDashoffset={c * (1 - deck)}
+          opacity="0.9"
+        />
+        <circle
+          cx="44"
+          cy="44"
+          r={r - 7}
+          fill="none"
+          className="stroke-emerald-500 transition-[stroke-dashoffset] duration-500 dark:stroke-emerald-400"
+          strokeWidth="3"
+          strokeLinecap="round"
+          strokeDasharray={2 * Math.PI * (r - 7)}
+          strokeDashoffset={2 * Math.PI * (r - 7) * (1 - mastery)}
+          opacity="0.85"
         />
       </svg>
       <span className="absolute inset-0 flex flex-col items-center justify-center text-center">
-        <span className="text-[10px] font-semibold uppercase tracking-wider text-zinc-400 dark:text-zinc-500">
-          Deck
-        </span>
+        <span className="text-[10px] font-semibold uppercase tracking-wider text-zinc-400 dark:text-zinc-500">Deck</span>
         <span className="text-sm font-bold tabular-nums text-zinc-900 dark:text-zinc-50">{label}</span>
       </span>
     </div>
@@ -102,6 +118,8 @@ export function Trainer() {
   }));
   const [streak, setStreak] = useState(0);
   const [copied, setCopied] = useState(false);
+  const [mastery, setMastery] = useState<MasteryMap>({});
+  const [showTypeAnswer, setShowTypeAnswer] = useState(false);
 
   useLayoutEffect(() => {
     setOrder(shuffle([...VOCABULARY]));
@@ -111,6 +129,7 @@ export function Trainer() {
     setTheme(readTheme());
     setDaily(loadDaily());
     setStreak(loadStreak().count);
+    setMastery(loadMastery());
   }, []);
 
   const entry = order[i] ?? VOCABULARY[0];
@@ -122,6 +141,7 @@ export function Trainer() {
     setSentenceEn("");
     setSentenceFeedback("idle");
     setShowSentenceAnswer(false);
+    setShowTypeAnswer(false);
   }, [mode, i]);
 
   useEffect(() => {
@@ -158,10 +178,35 @@ export function Trainer() {
     setI((x) => (x + 1 >= order.length ? 0 : x + 1));
   }, [recordExposure, order.length]);
 
+  const previous = useCallback(() => {
+    setI((x) => (x - 1 < 0 ? order.length - 1 : x - 1));
+  }, [order.length]);
+
   const reshuffle = () => {
     setOrder(shuffle([...VOCABULARY]));
     setI(0);
   };
+
+  const entryLearned = !!mastery[entry.id];
+  const masteredCount = useMemo(() => Object.keys(mastery).length, [mastery]);
+  const masteryProgress = VOCABULARY.length ? masteredCount / VOCABULARY.length : 0;
+
+  const onToggleMastery = useCallback(() => {
+    setMastery((m) => {
+      const learnedNow = !m[entry.id];
+      return toggleMastery(entry.id, learnedNow);
+    });
+  }, [entry.id]);
+
+  const markLearnedAndNext = useCallback(() => {
+    setMastery((m) => (m[entry.id] ? m : toggleMastery(entry.id, true)));
+    next();
+  }, [entry.id, next]);
+
+  const markRepeatAndNext = useCallback(() => {
+    setMastery((m) => (m[entry.id] ? toggleMastery(entry.id, false) : m));
+    next();
+  }, [entry.id, next]);
 
   const onTheme = () => {
     setTheme(toggleTheme());
@@ -211,24 +256,27 @@ export function Trainer() {
       : null;
 
   useEffect(() => {
-    if (mode !== "cards") return;
     const onKey = (e: KeyboardEvent) => {
       const t = e.target as HTMLElement | null;
       const tag = t?.tagName;
       if (tag === "INPUT" || tag === "TEXTAREA" || tag === "SELECT" || t?.isContentEditable) return;
-      if (e.code === "Space") {
+      if (e.metaKey || e.ctrlKey || e.altKey) return;
+      if (mode === "cards" && e.code === "Space") {
         e.preventDefault();
         setFlipped((f) => !f);
       }
       if (e.key === "ArrowRight" || e.key === "n" || e.key === "N") {
-        if (e.metaKey || e.ctrlKey || e.altKey) return;
         e.preventDefault();
         next();
+      }
+      if (e.key === "ArrowLeft" || e.key === "p" || e.key === "P") {
+        e.preventDefault();
+        previous();
       }
     };
     window.addEventListener("keydown", onKey);
     return () => window.removeEventListener("keydown", onKey);
-  }, [mode, next]);
+  }, [mode, next, previous]);
 
   const panelBase =
     "rounded-[1.35rem] border border-zinc-200/80 bg-white/75 p-5 shadow-[0_8px_32px_-12px_rgb(0_0_0_/_0.12)] backdrop-blur-xl dark:border-zinc-800/80 dark:bg-zinc-900/45 dark:shadow-[0_12px_40px_-16px_rgb(0_0_0_/_0.45)] sm:p-6";
@@ -257,11 +305,17 @@ export function Trainer() {
       {/* Session strip */}
       <section className="rounded-[1.35rem] border border-zinc-200/70 bg-white/60 p-4 shadow-sm backdrop-blur-xl dark:border-zinc-800/70 dark:bg-zinc-900/40 sm:p-5">
         <div className="flex flex-wrap items-center gap-4">
-          <ProgressRing progress={deckProgress} label={deckLabel} />
+          <ProgressRing deckProgress={deckProgress} masteryProgress={masteryProgress} label={deckLabel} />
           <div className="min-w-0 flex-1 space-y-3">
-            <div className="flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-zinc-500 dark:text-zinc-400">
-              <Sparkles className="size-3.5 text-teal-600 dark:text-teal-400" strokeWidth={2} />
-              Today
+            <div className="flex flex-wrap items-center justify-between gap-2">
+              <div className="flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-zinc-500 dark:text-zinc-400">
+                <Sparkles className="size-3.5 text-teal-600 dark:text-teal-400" strokeWidth={2} />
+                Today
+              </div>
+              <span className="inline-flex items-center gap-1 rounded-full border border-emerald-500/25 bg-emerald-500/10 px-2 py-0.5 text-[10px] font-bold uppercase tracking-wider text-emerald-700 dark:text-emerald-300">
+                <Trophy className="size-3" strokeWidth={2.5} />
+                {masteredCount}/{VOCABULARY.length} mastered
+              </span>
             </div>
             <div className="grid grid-cols-3 gap-2 text-center sm:gap-3">
               <div className="rounded-xl border border-zinc-200/80 bg-white/80 px-2 py-2 dark:border-zinc-700/70 dark:bg-zinc-950/40">
@@ -285,8 +339,10 @@ export function Trainer() {
           </div>
         </div>
         <p className="mt-3 text-center text-[11px] leading-relaxed text-zinc-500 dark:text-zinc-500">
-          Cards: <kbd className="rounded-md border border-zinc-300/80 bg-zinc-100/80 px-1.5 py-0.5 font-mono text-[10px] dark:border-zinc-600 dark:bg-zinc-800">Space</kbd> flip ·{" "}
-          <kbd className="rounded-md border border-zinc-300/80 bg-zinc-100/80 px-1.5 py-0.5 font-mono text-[10px] dark:border-zinc-600 dark:bg-zinc-800">→</kbd> or{" "}
+          <kbd className="rounded-md border border-zinc-300/80 bg-zinc-100/80 px-1.5 py-0.5 font-mono text-[10px] dark:border-zinc-600 dark:bg-zinc-800">Space</kbd> flip ·{" "}
+          <kbd className="rounded-md border border-zinc-300/80 bg-zinc-100/80 px-1.5 py-0.5 font-mono text-[10px] dark:border-zinc-600 dark:bg-zinc-800">←</kbd>/
+          <kbd className="rounded-md border border-zinc-300/80 bg-zinc-100/80 px-1.5 py-0.5 font-mono text-[10px] dark:border-zinc-600 dark:bg-zinc-800">P</kbd> prev ·{" "}
+          <kbd className="rounded-md border border-zinc-300/80 bg-zinc-100/80 px-1.5 py-0.5 font-mono text-[10px] dark:border-zinc-600 dark:bg-zinc-800">→</kbd>/
           <kbd className="rounded-md border border-zinc-300/80 bg-zinc-100/80 px-1.5 py-0.5 font-mono text-[10px] dark:border-zinc-600 dark:bg-zinc-800">N</kbd> next
         </p>
       </section>
@@ -341,15 +397,31 @@ export function Trainer() {
 
       {mode === "cards" && (
         <section className={`flex flex-col gap-4 ${panelBase}`}>
-          <label className="flex min-h-11 cursor-pointer items-center gap-3 rounded-xl border border-zinc-200/60 bg-zinc-50/80 px-3 py-2 text-sm text-zinc-600 dark:border-zinc-700/60 dark:bg-zinc-950/40 dark:text-zinc-400">
-            <input
-              type="checkbox"
-              checked={reverse}
-              onChange={(e) => setReverse(e.target.checked)}
-              className="size-5 shrink-0 rounded-md border-zinc-300 text-teal-600 focus:ring-teal-500/40 dark:border-zinc-600 dark:bg-zinc-900"
-            />
-            German on the front
-          </label>
+          <div className="flex flex-wrap items-center justify-between gap-2">
+            <label className="flex min-h-11 cursor-pointer items-center gap-3 rounded-xl border border-zinc-200/60 bg-zinc-50/80 px-3 py-2 text-sm text-zinc-600 dark:border-zinc-700/60 dark:bg-zinc-950/40 dark:text-zinc-400">
+              <input
+                type="checkbox"
+                checked={reverse}
+                onChange={(e) => setReverse(e.target.checked)}
+                className="size-5 shrink-0 rounded-md border-zinc-300 text-teal-600 focus:ring-teal-500/40 dark:border-zinc-600 dark:bg-zinc-900"
+              />
+              German on the front
+            </label>
+            <button
+              type="button"
+              onClick={onToggleMastery}
+              className={[
+                "inline-flex items-center gap-1.5 rounded-xl border px-3 py-1.5 text-[11px] font-semibold transition",
+                entryLearned
+                  ? "border-emerald-500/35 bg-emerald-500/15 text-emerald-700 hover:bg-emerald-500/20 dark:border-emerald-400/30 dark:bg-emerald-400/15 dark:text-emerald-200"
+                  : "border-zinc-200/80 bg-white/70 text-zinc-600 hover:border-teal-500/30 hover:text-teal-700 dark:border-zinc-700/80 dark:bg-zinc-900/40 dark:text-zinc-300 dark:hover:border-teal-400/30 dark:hover:text-teal-300",
+              ].join(" ")}
+              aria-pressed={entryLearned}
+            >
+              <Check className="size-3.5" strokeWidth={2.5} />
+              {entryLearned ? "Mastered" : "Mark mastered"}
+            </button>
+          </div>
 
           <button
             type="button"
@@ -359,9 +431,17 @@ export function Trainer() {
           >
             <div className={`flip-track relative min-h-[min(52dvh,22rem)] w-full sm:min-h-[15rem] ${flipped ? "is-flipped" : ""}`}>
               <div className="flip-face absolute inset-0 flex flex-col justify-center overflow-hidden rounded-2xl border border-zinc-200/80 bg-gradient-to-br from-white via-zinc-50/90 to-teal-50/30 p-6 shadow-inner dark:border-zinc-700/80 dark:from-zinc-950 dark:via-zinc-900/90 dark:to-teal-950/20">
-                <p className="text-[11px] font-bold uppercase tracking-[0.18em] text-zinc-500 dark:text-zinc-400">
-                  {reverse ? "German" : "English"}
-                </p>
+                <div className="flex items-center justify-between gap-2">
+                  <p className="text-[11px] font-bold uppercase tracking-[0.18em] text-zinc-500 dark:text-zinc-400">
+                    {reverse ? "German" : "English"}
+                  </p>
+                  {entryLearned && (
+                    <span className="inline-flex items-center gap-1 rounded-full border border-emerald-500/30 bg-emerald-500/10 px-2 py-0.5 text-[10px] font-bold uppercase tracking-wider text-emerald-700 dark:text-emerald-300">
+                      <Check className="size-3" strokeWidth={3} />
+                      Mastered
+                    </span>
+                  )}
+                </div>
                 <p className="mt-3 text-pretty text-[clamp(1.15rem,4.2vw,1.55rem)] font-semibold leading-snug tracking-tight text-zinc-900 dark:text-zinc-50">
                   {front}
                 </p>
@@ -382,14 +462,37 @@ export function Trainer() {
             </div>
           </button>
 
+          <div className="grid grid-cols-2 gap-2 sm:flex sm:flex-wrap">
+            <button
+              type="button"
+              onClick={markRepeatAndNext}
+              className="col-span-1 inline-flex min-h-12 flex-1 items-center justify-center gap-2 rounded-2xl border border-amber-500/30 bg-amber-500/10 px-4 text-sm font-semibold text-amber-700 shadow-sm transition hover:bg-amber-500/15 active:scale-[0.98] dark:border-amber-400/25 dark:bg-amber-400/10 dark:text-amber-300 dark:hover:bg-amber-400/15"
+            >
+              <RotateCcw className="size-4 opacity-80" strokeWidth={2} />
+              Repeat
+            </button>
+            <button
+              type="button"
+              onClick={markLearnedAndNext}
+              className="col-span-1 inline-flex min-h-12 flex-1 items-center justify-center gap-2 rounded-2xl border border-emerald-500/35 bg-emerald-500/15 px-4 text-sm font-semibold text-emerald-700 shadow-sm transition hover:bg-emerald-500/20 active:scale-[0.98] dark:border-emerald-400/30 dark:bg-emerald-400/15 dark:text-emerald-200 dark:hover:bg-emerald-400/20"
+            >
+              <Check className="size-4" strokeWidth={2.5} />
+              Got it
+            </button>
+          </div>
+
           <div className="grid grid-cols-1 gap-2 sm:flex sm:flex-wrap">
+            <button type="button" onClick={previous} className={btnSecondary}>
+              <ChevronLeft className="size-4 opacity-80" strokeWidth={2} />
+              Previous
+            </button>
             <button type="button" onClick={next} className={btnPrimary}>
               Next word
               <ChevronRight className="size-4 opacity-90" strokeWidth={2.5} />
             </button>
             <button type="button" onClick={reshuffle} className={btnSecondary}>
               <RotateCcw className="size-4 opacity-80" strokeWidth={2} />
-              Shuffle deck
+              Shuffle
             </button>
           </div>
         </section>
@@ -436,11 +539,30 @@ export function Trainer() {
                 <Check className="size-4" strokeWidth={2.5} />
                 Check
               </button>
+              <button
+                type="button"
+                onClick={() => setShowTypeAnswer((s) => !s)}
+                className={btnSecondary}
+              >
+                <Eye className="size-4 opacity-80" strokeWidth={2} />
+                {showTypeAnswer ? "Hide answer" : "Reveal"}
+              </button>
               <button type="button" onClick={skipItem} className={btnSecondary}>
                 Skip
               </button>
             </div>
           </form>
+
+          {showTypeAnswer && typeFeedback === "idle" && (
+            <div className="rounded-2xl border border-teal-500/25 bg-teal-500/[0.06] px-4 py-3 dark:border-teal-400/25 dark:bg-teal-400/[0.08]">
+              <p className="text-[10px] font-bold uppercase tracking-[0.18em] text-teal-700 dark:text-teal-300">
+                Liste · 1:1
+              </p>
+              <p className="mt-1.5 text-pretty text-base font-semibold leading-snug text-zinc-900 dark:text-zinc-50">
+                {typeExpectedList}
+              </p>
+            </div>
+          )}
 
           {typeFeedback === "ok" && (
             <div className="flex flex-col gap-3">
