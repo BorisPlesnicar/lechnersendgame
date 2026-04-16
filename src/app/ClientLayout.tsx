@@ -2,6 +2,7 @@
 
 import { useEffect } from "react";
 import { AppShell } from "@/components/layout/AppShell";
+import { FloatingLechner } from "@/components/layout/FloatingLechner";
 import { applyTheme, readTheme } from "@/lib/theme";
 
 export function ClientLayout({ children }: { children: React.ReactNode }) {
@@ -9,5 +10,10 @@ export function ClientLayout({ children }: { children: React.ReactNode }) {
     applyTheme(readTheme());
   }, []);
 
-  return <AppShell>{children}</AppShell>;
+  return (
+    <>
+      <AppShell>{children}</AppShell>
+      <FloatingLechner />
+    </>
+  );
 }

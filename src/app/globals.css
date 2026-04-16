@@ -98,3 +98,27 @@ html.light ::selection {
 .copy-toast {
   animation: copy-toast-in 0.25s ease-out;
 }
+
+/* Gentle drift so the mascot feels “around” the page without stealing focus */
+@keyframes lechner-drift {
+  0%,
+  100% {
+    transform: translate(0, 0) rotate(-2deg);
+  }
+  20% {
+    transform: translate(-10px, -6px) rotate(-1deg);
+  }
+  45% {
+    transform: translate(6px, 4px) rotate(-3deg);
+  }
+  70% {
+    transform: translate(-4px, 8px) rotate(-1.5deg);
+  }
+  88% {
+    transform: translate(8px, -4px) rotate(-2.5deg);
+  }
+}
+
+.lechner-drift {
+  animation: lechner-drift 22s ease-in-out infinite;
+}

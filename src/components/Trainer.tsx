@@ -182,6 +182,9 @@ export function Trainer() {
     entry.sentence.modelEnglish ??
     entry.sentence.example.replace(/\{\{w\}\}/g, entry.en);
 
+  /** Type mode: always show this 1:1 list string after a check (same strings as `translationMatches`). */
+  const typeExpectedList = typeDir === "en-de" ? entry.de : entry.en;
+
   const checkSentence = (e: React.FormEvent) => {
     e.preventDefault();
     const ok = translationMatches(sentenceEn, answerEn);
@@ -440,20 +443,37 @@ export function Trainer() {
           </form>
 
           {typeFeedback === "ok" && (
-            <p className="flex items-center gap-2 text-sm font-semibold text-emerald-600 dark:text-emerald-400">
-              <span className="flex size-6 items-center justify-center rounded-full bg-emerald-500/15">
-                <Check className="size-3.5" strokeWidth={3} />
-              </span>
-              Nice — that works.
-            </p>
+            <div className="flex flex-col gap-3">
+              <p className="flex items-center gap-2 text-sm font-semibold text-emerald-600 dark:text-emerald-400">
+                <span className="flex size-6 items-center justify-center rounded-full bg-emerald-500/15">
+                  <Check className="size-3.5" strokeWidth={3} />
+                </span>
+                Nice — that works.
+              </p>
+              <div className="rounded-2xl border border-zinc-200/80 bg-white/60 px-4 py-3 backdrop-blur-sm dark:border-zinc-700/70 dark:bg-zinc-900/50">
+                <p className="text-[10px] font-bold uppercase tracking-[0.18em] text-zinc-500 dark:text-zinc-400">
+                  Liste · 1:1
+                </p>
+                <p className="mt-1.5 text-pretty text-base font-semibold leading-snug text-zinc-900 dark:text-zinc-50">
+                  {typeExpectedList}
+                </p>
+              </div>
+            </div>
           )}
           {typeFeedback === "bad" && (
-            <p className="text-sm leading-relaxed text-red-600 dark:text-red-400">
-              Try something like:{" "}
-              <span className="font-semibold text-zinc-900 dark:text-zinc-100">
-                {typeDir === "en-de" ? entry.de : entry.en}
-              </span>
-            </p>
+            <div className="flex flex-col gap-3">
+              <p className="text-sm font-medium leading-relaxed text-red-600 dark:text-red-400">
+                Not quite — use the list wording exactly:
+              </p>
+              <div className="rounded-2xl border border-zinc-200/80 bg-white/60 px-4 py-3 backdrop-blur-sm dark:border-zinc-700/70 dark:bg-zinc-900/50">
+                <p className="text-[10px] font-bold uppercase tracking-[0.18em] text-zinc-500 dark:text-zinc-400">
+                  Liste · 1:1
+                </p>
+                <p className="mt-1.5 text-pretty text-base font-semibold leading-snug text-zinc-900 dark:text-zinc-50">
+                  {typeExpectedList}
+                </p>
+              </div>
+            </div>
           )}
         </section>
       )}

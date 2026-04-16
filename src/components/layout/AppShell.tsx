@@ -29,7 +29,7 @@ export function AppShell({ children }: { children: ReactNode }) {
           <div className="h-px w-full bg-gradient-to-r from-transparent via-teal-500/25 to-transparent dark:via-teal-400/20" />
         </div>
       </header>
-      <main className="mx-auto w-full max-w-md flex-1 px-4 pb-[max(1.5rem,env(safe-area-inset-bottom))] pt-6 sm:max-w-lg sm:px-5 sm:pt-8">
+      <main className="mx-auto w-full max-w-md flex-1 pl-4 pr-4 pb-[max(1.5rem,env(safe-area-inset-bottom))] pt-6 max-sm:pr-[max(1rem,5.75rem)] sm:max-w-lg sm:px-5 sm:pt-8">
         {children}
       </main>
     </div>
