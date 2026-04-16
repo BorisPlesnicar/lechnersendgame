@@ -427,7 +427,7 @@ export function Trainer() {
             type="button"
             data-flip-card
             onClick={() => setFlipped((f) => !f)}
-            className="perspective-card group w-full text-left focus:outline-none focus-visible:ring-2 focus-visible:ring-teal-500/50 focus-visible:ring-offset-2 focus-visible:ring-offset-white dark:focus-visible:ring-offset-zinc-950"
+            className="perspective-card group w-full touch-manipulation text-left [-webkit-tap-highlight-color:transparent] focus:outline-none focus-visible:ring-2 focus-visible:ring-teal-500/50 focus-visible:ring-offset-2 focus-visible:ring-offset-white dark:focus-visible:ring-offset-zinc-950"
           >
             <div className={`flip-track relative min-h-[min(52dvh,22rem)] w-full sm:min-h-[15rem] ${flipped ? "is-flipped" : ""}`}>
               <div className="flip-face absolute inset-0 flex flex-col justify-center overflow-hidden rounded-2xl border border-zinc-200/80 bg-gradient-to-br from-white via-zinc-50/90 to-teal-50/30 p-6 shadow-inner dark:border-zinc-700/80 dark:from-zinc-950 dark:via-zinc-900/90 dark:to-teal-950/20">

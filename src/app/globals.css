@@ -61,6 +61,15 @@ html.light ::selection {
   -webkit-backface-visibility: hidden;
 }
 
+/* Back face stacks on top in DOM; visually hidden faces can still steal taps on mobile Safari. */
+.flip-track:not(.is-flipped) .flip-face-back {
+  pointer-events: none;
+}
+
+.flip-track.is-flipped .flip-face-front {
+  pointer-events: none;
+}
+
 .flip-face-back {
   transform: rotateY(180deg);
 }
