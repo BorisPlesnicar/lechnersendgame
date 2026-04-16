@@ -1,8 +1,9 @@
 import type { VocabEntry } from "@/lib/types";
 
 /**
- * Sole word list — class sheet **"How to Buy a Gun in 15 Countries"** (29 entries).
- * Each practice sentence weaves several sheet terms together; exactly one `{{w}}` / `___` marks the gap.
+ * Class sheet **"How to Buy a Gun in 15 Countries"** (29 entries).
+ * Practice sentences use several sheet terms where it fits; exactly one `{{w}}` / `___` is the gap.
+ * English is plain B2: short clauses, common words, no fancy style.
  */
 export const VOCABULARY: VocabEntry[] = [
   {
@@ -10,21 +11,19 @@ export const VOCABULARY: VocabEntry[] = [
     en: "to obtain a gun",
     de: "Waffe bekommen",
     sentence: {
-      example:
-        "Even after background checks and a full review, you may still be refused a permit unless you can show lawful reasons {{w}}.",
-      gap: "Even after background checks and a full review, you may still be refused a permit unless you can show lawful reasons ___.",
+      example: "First you pass background checks; then you can try {{w}} with a permit.",
+      gap: "First you pass background checks; then you can try ___ with a permit.",
       gapAnswer: "to obtain a gun",
-      modelEnglish:
-        "Even after background checks and a full review, you may still be refused a permit unless you can show lawful reasons to obtain a gun.",
+      modelEnglish: "First you pass background checks; then you can try to obtain a gun with a permit.",
       modelGerman:
-        "Selbst nach einer Überprüfung des kriminellen Hintergrunds und einer genauen Überprüfung der Unterlagen kann eine Erlaubnis verweigert werden, wenn keine triftigen Gründe genannt werden, eine Waffe zu bekommen.",
+        "Zuerst besteht man die Überprüfung des kriminellen Hintergrunds; dann kann man versuchen, mit einer Erlaubnis eine Waffe zu bekommen.",
       meaningOptionsDe: [
         "Waffe bekommen",
         "Waffe führen",
         "Waffe verkaufen",
         "Waffe verstecken",
       ],
-      ownSentenceHint: "Chain checks → review → permit decision; target is the infinitive phrase.",
+      ownSentenceHint: "Use after try / want / need + simple reason or permit.",
       difficulty: 2,
     },
   },
@@ -33,21 +32,19 @@ export const VOCABULARY: VocabEntry[] = [
     en: "to carry a gun",
     de: "Waffe führen / tragen",
     sentence: {
-      example:
-        "Owning a firearm is one thing; the law is stricter about who is allowed {{w}} near schools or inside a retail store.",
-      gap: "Owning a firearm is one thing; the law is stricter about who is allowed ___ near schools or inside a retail store.",
+      example: "In many places it is illegal {{w}} in a school or a retail store.",
+      gap: "In many places it is illegal ___ in a school or a retail store.",
       gapAnswer: "to carry a gun",
-      modelEnglish:
-        "Owning a firearm is one thing; the law is stricter about who is allowed to carry a gun near schools or inside a retail store.",
+      modelEnglish: "In many places it is illegal to carry a gun in a school or a retail store.",
       modelGerman:
-        "Eine Schusswaffe zu besitzen ist eine Sache; strenger fragt das Gesetz, wer eine Waffe führen bzw. tragen darf, nahe Schulen oder in einem Einzelhandelsgeschäft.",
+        "An vielen Orten darf man in einer Schule oder in einem Einzelhandelsgeschäft keine Waffe führen bzw. tragen.",
       meaningOptionsDe: [
         "Waffe führen / tragen",
         "Waffe bekommen",
         "Waffe lagern",
         "Waffe zerlegen",
       ],
-      ownSentenceHint: "Contrast ownership (firearm) with public carrying and place (retail store).",
+      ownSentenceHint: "cannot + infinitive phrase; add a place from the sheet.",
       difficulty: 2,
     },
   },
@@ -56,21 +53,19 @@ export const VOCABULARY: VocabEntry[] = [
     en: "firearm",
     de: "Schusswaffe",
     sentence: {
-      example:
-        "Background checks look for domestic violence and a conviction before any semiautomatic {{w}} leaves the shop.",
-      gap: "Background checks look for domestic violence and a conviction before any semiautomatic ___ leaves the shop.",
+      example: "A semiautomatic {{w}} is harder to buy if you have a conviction.",
+      gap: "A semiautomatic ___ is harder to buy if you have a conviction.",
       gapAnswer: "firearm",
-      modelEnglish:
-        "Background checks look for domestic violence and a conviction before any semiautomatic firearm leaves the shop.",
+      modelEnglish: "A semiautomatic firearm is harder to buy if you have a conviction.",
       modelGerman:
-        "Eine Überprüfung des kriminellen Hintergrunds prüft auf häusliche Gewalt und eine Verurteilung, bevor eine halbautomatische Schusswaffe den Laden verlässt.",
+        "Eine halbautomatische Schusswaffe ist schwerer zu kaufen, wenn man eine Verurteilung hat.",
       meaningOptionsDe: [
         "Schusswaffe",
         "Schutzweste",
         "Schließfach",
         "Schießstand",
       ],
-      ownSentenceHint: "Stack checks + domestic violence + conviction + semiautomatic + target noun.",
+      ownSentenceHint: "Put the noun after semiautomatic; add conviction.",
       difficulty: 2,
     },
   },
@@ -79,22 +74,20 @@ export const VOCABULARY: VocabEntry[] = [
     en: "handgun / pistol",
     de: "Handfeuerwaffe",
     sentence: {
-      example:
-        "Compared with a rifle, a semiautomatic {{w}} is easier to conceal, which is why mental health / illness questions appear on the form.",
-      gap: "Compared with a rifle, a semiautomatic ___ is easier to conceal, which is why mental health / illness questions appear on the form.",
+      example: "Keep your {{w}} in a locker; keep ammunition in another place.",
+      gap: "Keep your ___ in a locker; keep ammunition in another place.",
       gapAnswer: "handgun",
       gapAliases: ["pistol", "handgun / pistol"],
-      modelEnglish:
-        "Compared with a rifle, a semiautomatic handgun is easier to conceal, which is why mental health / illness questions appear on the form.",
+      modelEnglish: "Keep your handgun in a locker; keep ammunition in another place.",
       modelGerman:
-        "Im Vergleich zu einem Gewehr lässt sich eine halbautomatische Handfeuerwaffe leichter verbergen, deshalb stehen auf dem Formular Fragen zu geistiger Gesundheit / Krankheit.",
+        "Bewahre deine Handfeuerwaffe in einem Spind bzw. Schließfach auf; die Munition an einem anderen Ort.",
       meaningOptionsDe: [
         "Handfeuerwaffe",
         "Schusswaffe",
         "Munition",
         "Gewehr",
       ],
-      ownSentenceHint: "Contrast rifle vs semiautomatic handgun; add mental health / illness screening.",
+      ownSentenceHint: "Locker + ammunition + one gun word from the list.",
       difficulty: 2,
     },
   },
@@ -103,21 +96,20 @@ export const VOCABULARY: VocabEntry[] = [
     en: "semiautomatic",
     de: "Halbautomatisch",
     sentence: {
-      example:
-        "During background checks, officials may refuse a firearm that is {{w}} if domestic violence appears in the file, even when a rifle would still be allowed.",
-      gap: "During background checks, officials may refuse a firearm that is ___ if domestic violence appears in the file, even when a rifle would still be allowed.",
+      example: "The shop may refuse a {{w}} firearm after domestic violence shows on a review.",
+      gap: "The shop may refuse a ___ firearm after domestic violence shows on a review.",
       gapAnswer: "semiautomatic",
       modelEnglish:
-        "During background checks, officials may refuse a firearm that is semiautomatic if domestic violence appears in the file, even when a rifle would still be allowed.",
+        "The shop may refuse a semiautomatic firearm after domestic violence shows on a review.",
       modelGerman:
-        "Bei einer Überprüfung des kriminellen Hintergrunds kann eine Schusswaffe abgelehnt werden, wenn sie halbautomatisch ist und häusliche Gewalt auftaucht, obwohl für die Jagd noch ein Gewehr möglich wäre.",
+        "Das Geschäft kann eine halbautomatische Schusswaffe ablehnen, wenn bei einer Überprüfung häusliche Gewalt auftaucht.",
       meaningOptionsDe: [
         "Halbautomatisch",
         "Vollautomatisch",
         "Manuell",
         "Elektrisch",
       ],
-      ownSentenceHint: "Adjective after **firearm**; contrast with **rifle** and domestic-violence hits.",
+      ownSentenceHint: "Adjective + firearm; add domestic violence or review.",
       difficulty: 2,
     },
   },
@@ -126,16 +118,15 @@ export const VOCABULARY: VocabEntry[] = [
     en: "rifle",
     de: "Gewehr",
     sentence: {
-      example:
-        "An accredited hunting / shooting club may require proof of (safe) gun storage before it endorses your request for a {{w}}.",
-      gap: "An accredited hunting / shooting club may require proof of (safe) gun storage before it endorses your request for a ___.",
+      example: "Many hunters use a {{w}} and belong to an accredited hunting / shooting club.",
+      gap: "Many hunters use a ___ and belong to an accredited hunting / shooting club.",
       gapAnswer: "rifle",
       modelEnglish:
-        "An accredited hunting / shooting club may require proof of (safe) gun storage before it endorses your request for a rifle.",
+        "Many hunters use a rifle and belong to an accredited hunting / shooting club.",
       modelGerman:
-        "Ein anerkannter Schießclub kann einen Nachweis für die (sichere) Verwahrung von Waffen verlangen, bevor er dir die Bitte um ein Gewehr bestätigt.",
+        "Viele Jäger nutzen ein Gewehr und sind Mitglied in einem anerkannten Schießclub.",
       meaningOptionsDe: ["Gewehr", "Pistole", "Messer", "Bogen"],
-      ownSentenceHint: "Club endorsement + (safe) gun storage + hunting **rifle**.",
+      ownSentenceHint: "Rifle + club from the sheet.",
       difficulty: 2,
     },
   },
@@ -144,21 +135,19 @@ export const VOCABULARY: VocabEntry[] = [
     en: "conviction",
     de: "Verurteilung",
     sentence: {
-      example:
-        "A violent {{w}} on your (criminal) record will usually make background checks fail, and domestic violence reports weigh even heavier.",
-      gap: "A violent ___ on your (criminal) record will usually make background checks fail, and domestic violence reports weigh even heavier.",
+      example: "A violent {{w}} on your (criminal) record can block a permit.",
+      gap: "A violent ___ on your (criminal) record can block a permit.",
       gapAnswer: "conviction",
-      modelEnglish:
-        "A violent conviction on your (criminal) record will usually make background checks fail, and domestic violence reports weigh even heavier.",
+      modelEnglish: "A violent conviction on your (criminal) record can block a permit.",
       modelGerman:
-        "Eine Verurteilung wegen Gewalt in der (Strafregisterauszug) Aufzeichnung lässt meist eine Überprüfung des kriminellen Hintergrunds scheitern, und Meldungen zu häuslicher Gewalt zählen noch schwerer.",
+        "Eine Verurteilung wegen Gewalt in der (Strafregisterauszug) Aufzeichnung kann eine Erlaubnis blockieren.",
       meaningOptionsDe: [
         "Verurteilung",
         "Überprüfung",
         "Erlaubnis",
         "Verwahrung",
       ],
-      ownSentenceHint: "Link **(criminal) record**, **background checks**, **domestic violence**.",
+      ownSentenceHint: "conviction + (criminal) record + permit.",
       difficulty: 2,
     },
   },
@@ -167,21 +156,19 @@ export const VOCABULARY: VocabEntry[] = [
     en: "background checks",
     de: "Überprüfung des kriminellen Hintergrunds",
     sentence: {
-      example:
-        "Retail stores treat {{w}} as routine, and answers that raise red flags can block the next step: to obtain a gun.",
-      gap: "Retail stores treat ___ as routine, and answers that raise red flags can block the next step: to obtain a gun.",
+      example: "{{w}} at a retail store are normal before you buy ammunition.",
+      gap: "___ at a retail store are normal before you buy ammunition.",
       gapAnswer: "background checks",
-      modelEnglish:
-        "Retail stores treat background checks as routine, and answers that raise red flags can block the next step: to obtain a gun.",
+      modelEnglish: "Background checks at a retail store are normal before you buy ammunition.",
       modelGerman:
-        "Einzelhandelsgeschäfte behandeln eine Überprüfung des kriminellen Hintergrunds als Routine, und Antworten können früh die Alarmglocken läuten und den nächsten Schritt blockieren: eine Waffe bekommen.",
+        "Eine Überprüfung des kriminellen Hintergrunds in einem Einzelhandelsgeschäft ist normal, bevor man Munition kauft.",
       meaningOptionsDe: [
         "Überprüfung des kriminellen Hintergrunds",
         "Einzelhandelsgeschäft",
         "Schießtraining",
         "Waffenschein",
       ],
-      ownSentenceHint: "**Retail store** + **raise red flags** + **to obtain a gun**.",
+      ownSentenceHint: "Plural subject + retail store + ammunition.",
       difficulty: 2,
     },
   },
@@ -190,22 +177,20 @@ export const VOCABULARY: VocabEntry[] = [
     en: "(criminal) record",
     de: "(Strafregisterauszug) Aufzeichnung",
     sentence: {
-      example:
-        "What appears on your {{w}} feeds the review after background checks and can mean you fail to pass a check even years later.",
-      gap: "What appears on your ___ feeds the review after background checks and can mean you fail to pass a check even years later.",
+      example: "If your {{w}} is not clean, you may not pass a check.",
+      gap: "If your ___ is not clean, you may not pass a check.",
       gapAnswer: "criminal record",
       gapAliases: ["record", "(criminal) record"],
-      modelEnglish:
-        "What appears on your (criminal) record feeds the review after background checks and can mean you fail to pass a check even years later.",
+      modelEnglish: "If your (criminal) record is not clean, you may not pass a check.",
       modelGerman:
-        "Was auf der (Strafregisterauszug) Aufzeichnung steht, wird nach der Überprüfung des kriminellen Hintergrunds mit einbezogen und kann verhindern, dass man eine Überprüfung besteht — auch Jahre später.",
+        "Wenn die (Strafregisterauszug) Aufzeichnung nicht sauber ist, besteht man die Überprüfung vielleicht nicht.",
       meaningOptionsDe: [
         "(Strafregisterauszug) Aufzeichnung",
         "Verurteilung",
         "Erlaubnis",
         "Durchsuchung",
       ],
-      ownSentenceHint: "Chain **review** + **background checks** + **to pass a check**.",
+      ownSentenceHint: "record + to pass a check (same topic).",
       difficulty: 3,
     },
   },
@@ -214,21 +199,19 @@ export const VOCABULARY: VocabEntry[] = [
     en: "review",
     de: "Überprüfung",
     sentence: {
-      example:
-        "The file's {{w}} follows background checks and may raise red flags if your (criminal) record conflicts with the permit you seek.",
-      gap: "The file's ___ follows background checks and may raise red flags if your (criminal) record conflicts with the permit you seek.",
+      example: "After background checks, there is a quick {{w}} of your file.",
+      gap: "After background checks, there is a quick ___ of your file.",
       gapAnswer: "review",
-      modelEnglish:
-        "The file's review follows background checks and may raise red flags if your (criminal) record conflicts with the permit you seek.",
+      modelEnglish: "After background checks, there is a quick review of your file.",
       modelGerman:
-        "Die Überprüfung der Akte folgt auf die Überprüfung des kriminellen Hintergrunds und kann die Alarmglocken läuten lassen, wenn die (Strafregisterauszug) Aufzeichnung mit der Erlaubnis kollidiert, die du suchst.",
+        "Nach der Überprüfung des kriminellen Hintergrunds folgt eine kurze Überprüfung der Akte.",
       meaningOptionsDe: [
         "Überprüfung",
         "Verurteilung",
         "Munition",
         "Einzelhandel",
       ],
-      ownSentenceHint: "**Review** as examination after **background checks**; add **raise red flags**, **(criminal) record**, **permit**.",
+      ownSentenceHint: "review of your file after background checks.",
       difficulty: 2,
     },
   },
@@ -237,22 +220,20 @@ export const VOCABULARY: VocabEntry[] = [
     en: "to pass a check",
     de: "Eine Überprüfung bestehen",
     sentence: {
-      example:
-        "Buyers normally have {{w}} before a retail store will hand over ammunition or finish the sale after a review and background checks.",
-      gap: "Buyers normally have ___ before a retail store will hand over ammunition or finish the sale after a review and background checks.",
+      example: "Before the sale, you have {{w}} at the retail store.",
+      gap: "Before the sale, you have ___ at the retail store.",
       gapAnswer: "to pass a check",
       gapAliases: ["pass a check"],
-      modelEnglish:
-        "Buyers normally have to pass a check before a retail store will hand over ammunition or finish the sale after a review and background checks.",
+      modelEnglish: "Before the sale, you have to pass a check at the retail store.",
       modelGerman:
-        "Du musst eine Überprüfung bestehen — im Rahmen der Überprüfung des kriminellen Hintergrunds —, bevor ein Einzelhandelsgeschäft Munition herausgibt oder nach einer Überprüfung den Verkauf abschließt.",
+        "Vor dem Verkauf muss man im Einzelhandelsgeschäft eine Überprüfung bestehen.",
       meaningOptionsDe: [
         "Eine Überprüfung bestehen",
         "Eine Waffe verkaufen",
         "Eine Lizenz verlängern",
         "Eine Strafe zahlen",
       ],
-      ownSentenceHint: "Use **have to pass a check**; weave in **retail store**, **ammunition**, **review**, **background checks**.",
+      ownSentenceHint: "have + target phrase (like have to pass a check).",
       difficulty: 2,
     },
   },
@@ -261,21 +242,20 @@ export const VOCABULARY: VocabEntry[] = [
     en: "domestic violence",
     de: "Häusliche Gewalt",
     sentence: {
-      example:
-        "{{w}} in the past, plus items on your (criminal) record, usually blocks a permit and can bar plans to obtain a gun or to carry a gun.",
-      gap: "___ in the past, plus items on your (criminal) record, usually blocks a permit and can bar plans to obtain a gun or to carry a gun.",
+      example: "{{w}} in the past can stop a permit or plans to obtain a gun.",
+      gap: "___ in the past can stop a permit or plans to obtain a gun.",
       gapAnswer: "domestic violence",
       modelEnglish:
-        "Domestic violence in the past, plus items on your (criminal) record, usually blocks a permit and can bar plans to obtain a gun or to carry a gun.",
+        "Domestic violence in the past can stop a permit or plans to obtain a gun.",
       modelGerman:
-        "Häusliche Gewalt in der Vergangenheit plus Einträge in der (Strafregisterauszug) Aufzeichnung blockieren meist eine Erlaubnis und Pläne, eine Waffe zu bekommen oder zu führen bzw. zu tragen.",
+        "Häusliche Gewalt in der Vergangenheit kann eine Erlaubnis blockieren oder Pläne, eine Waffe zu bekommen.",
       meaningOptionsDe: [
         "Häusliche Gewalt",
         "Öffentliche Debatte",
         "Jugendschutz",
         "Verkehrssicherheit",
       ],
-      ownSentenceHint: "**(criminal) record**, **permit**, **to obtain a gun**, **to carry a gun**.",
+      ownSentenceHint: "Start the sentence; add permit + to obtain a gun.",
       difficulty: 2,
     },
   },
@@ -284,22 +264,21 @@ export const VOCABULARY: VocabEntry[] = [
     en: "accredited hunting / shooting club",
     de: "Anerkannter Schießclub",
     sentence: {
-      example:
-        "Membership in an {{w}}, together with a certificate and clean background checks, signals structured training before you obtain a gun.",
-      gap: "Membership in an ___, together with a certificate and clean background checks, signals structured training before you obtain a gun.",
+      example: "You learn safe rules in an {{w}} with a certificate and background checks.",
+      gap: "You learn safe rules in an ___ with a certificate and background checks.",
       gapAnswer: "accredited hunting / shooting club",
       gapAliases: ["accredited shooting club", "accredited hunting club"],
       modelEnglish:
-        "Membership in an accredited hunting / shooting club, together with a certificate and clean background checks, signals structured training before you obtain a gun.",
+        "You learn safe rules in an accredited hunting / shooting club with a certificate and background checks.",
       modelGerman:
-        "Mitgliedschaft in einem anerkannten Schießclub zusammen mit einem Zertifikat und einer sauberen Überprüfung des kriminellen Hintergrunds zeigt strukturiertes Training, bevor man eine Waffe bekommt.",
+        "In einem anerkannten Schießclub lernt man sichere Regeln — mit Zertifikat und Überprüfung des kriminellen Hintergrunds.",
       meaningOptionsDe: [
         "Anerkannter Schießclub",
         "Einzelhandelsgeschäft",
         "Strafregister",
         "Schließfach",
       ],
-      ownSentenceHint: "**Certificate**, **background checks**, **to obtain a gun**.",
+      ownSentenceHint: "an + club name + certificate / background checks.",
       difficulty: 3,
     },
   },
@@ -308,22 +287,21 @@ export const VOCABULARY: VocabEntry[] = [
     en: "to vouch for sb",
     de: "für jem. bürgen",
     sentence: {
-      example:
-        "The panel asks whether your sponsor is prepared {{w}} after a review of background checks and your (criminal) record.",
-      gap: "The panel asks whether your sponsor is prepared ___ after a review of background checks and your (criminal) record.",
+      example: "Your sponsor must be ready {{w}} after background checks and a review of your (criminal) record.",
+      gap: "Your sponsor must be ready ___ after background checks and a review of your (criminal) record.",
       gapAnswer: "to vouch for sb",
       gapAliases: ["to vouch for somebody", "to vouch for someone"],
       modelEnglish:
-        "The panel asks whether your sponsor is prepared to vouch for sb after a review of background checks and your (criminal) record.",
+        "Your sponsor must be ready to vouch for sb after background checks and a review of your (criminal) record.",
       modelGerman:
-        "Die Kommission fragt, ob dein Bürge bereit ist, für jem. zu bürgen — nach einer Überprüfung der Akten, einer Überprüfung des kriminellen Hintergrunds und deiner (Strafregisterauszug) Aufzeichnung.",
+        "Der Bürge muss bereit sein, für jem. zu bürgen — nach Überprüfung des kriminellen Hintergrunds und einer Überprüfung der (Strafregisterauszug) Aufzeichnung.",
       meaningOptionsDe: [
         "für jem. bürgen",
         "jem. durchsuchen",
         "jem. verbieten",
         "jem. ignorieren",
       ],
-      ownSentenceHint: "Formal panel / guarantor context.",
+      ownSentenceHint: "ready + list phrase; sponsor + checks + record.",
       difficulty: 2,
     },
   },
@@ -332,21 +310,19 @@ export const VOCABULARY: VocabEntry[] = [
     en: "to raise red flags",
     de: "Die Alarmglocken läuten",
     sentence: {
-      example:
-        "Gaps between addresses and IDs alone can be enough {{w}} during background checks once your (criminal) record is pulled into the review.",
-      gap: "Gaps between addresses and IDs alone can be enough ___ during background checks once your (criminal) record is pulled into the review.",
+      example: "Wrong data on the form can be enough {{w}} during background checks.",
+      gap: "Wrong data on the form can be enough ___ during background checks.",
       gapAnswer: "to raise red flags",
-      modelEnglish:
-        "Gaps between addresses and IDs alone can be enough to raise red flags during background checks once your (criminal) record is pulled into the review.",
+      modelEnglish: "Wrong data on the form can be enough to raise red flags during background checks.",
       modelGerman:
-        "Widersprüche zwischen Adresse und Ausweis können schon bei einer Überprüfung des kriminellen Hintergrunds die Alarmglocken läuten lassen, sobald die (Strafregisterauszug) Aufzeichnung in die Überprüfung einfließt.",
+        "Falsche Daten im Formular können bei einer Überprüfung des kriminellen Hintergrunds schon die Alarmglocken läuten lassen.",
       meaningOptionsDe: [
         "Die Alarmglocken läuten",
         "Die Lizenz erteilen",
         "Die Munition kaufen",
         "Die Waffe lagern",
       ],
-      ownSentenceHint: "**Background checks** + **(criminal) record** + **review**; use **enough to** + infinitive.",
+      ownSentenceHint: "enough + infinitive; background checks.",
       difficulty: 2,
     },
   },
@@ -355,21 +331,20 @@ export const VOCABULARY: VocabEntry[] = [
     en: "thriving business",
     de: "Blühendes Geschäft",
     sentence: {
-      example:
-        "After new storage rules, advising on (safe) gun storage became a {{w}} beside retail store compliance manuals and diligence audits.",
-      gap: "After new storage rules, advising on (safe) gun storage became a ___ beside retail store compliance manuals and diligence audits.",
+      example: "Advice on (safe) gun storage became a {{w}} next to retail store manuals.",
+      gap: "Advice on (safe) gun storage became a ___ next to retail store manuals.",
       gapAnswer: "thriving business",
       modelEnglish:
-        "After new storage rules, advising on (safe) gun storage became a thriving business beside retail store compliance manuals and diligence audits.",
+        "Advice on (safe) gun storage became a thriving business next to retail store manuals.",
       modelGerman:
-        "Nach neuen Aufbewahrungsregeln wurde Beratung zur (sicheren) Verwahrung von Waffen zu einem blühenden Geschäft neben Handbüchern für Einzelhandelsgeschäfte und Prüfungen mit Sorgfalt.",
+        "Beratung zur (sicheren) Verwahrung von Waffen wurde neben Handbüchern für Einzelhandelsgeschäfte ein blühendes Geschäft.",
       meaningOptionsDe: [
         "Blühendes Geschäft",
         "Strafregister",
         "Schießstand",
         "Verwahrung",
       ],
-      ownSentenceHint: "**(safe) gun storage**, **retail store**, **diligence** / audit tone.",
+      ownSentenceHint: "(safe) gun storage + retail store + noun phrase.",
       difficulty: 2,
     },
   },
@@ -378,21 +353,19 @@ export const VOCABULARY: VocabEntry[] = [
     en: "retail store",
     de: "Einzelhandelsgeschäft",
     sentence: {
-      example:
-        "Inside a licensed {{w}}, staff log each firearm sale after background checks and before releasing ammunition.",
-      gap: "Inside a licensed ___, staff log each firearm sale after background checks and before releasing ammunition.",
+      example: "Staff at a {{w}} log each firearm sale after background checks.",
+      gap: "Staff at a ___ log each firearm sale after background checks.",
       gapAnswer: "retail store",
-      modelEnglish:
-        "Inside a licensed retail store, staff log each firearm sale after background checks and before releasing ammunition.",
+      modelEnglish: "Staff at a retail store log each firearm sale after background checks.",
       modelGerman:
-        "In einem lizenzierten Einzelhandelsgeschäft wird jeder Schusswaffenverkauf nach einer Überprüfung des kriminellen Hintergrunds protokolliert, bevor Munition herausgegeben wird.",
+        "Im Einzelhandelsgeschäft wird jeder Schusswaffenverkauf nach der Überprüfung des kriminellen Hintergrunds erfasst.",
       meaningOptionsDe: [
         "Einzelhandelsgeschäft",
         "Schießclub",
         "Gerichtssaal",
         "Polizeiwache",
       ],
-      ownSentenceHint: "**Firearm**, **background checks**, **ammunition** at the counter.",
+      ownSentenceHint: "retail store + firearm + background checks.",
       difficulty: 2,
     },
   },
@@ -401,22 +374,21 @@ export const VOCABULARY: VocabEntry[] = [
     en: "mental health / illness",
     de: "Geistige Gesundheit / Krankheit",
     sentence: {
-      example:
-        "{{w}} questions sit beside domestic violence screening and background checks so risk is judged on facts, not rumours.",
-      gap: "___ questions sit beside domestic violence screening and background checks so risk is judged on facts, not rumours.",
+      example: "The form asks about {{w}} and domestic violence before a permit.",
+      gap: "The form asks about ___ and domestic violence before a permit.",
       gapAnswer: "mental health",
       gapAliases: ["mental illness", "mental health / illness"],
       modelEnglish:
-        "Mental health / illness questions sit beside domestic violence screening and background checks so risk is judged on facts, not rumours.",
+        "The form asks about mental health / illness and domestic violence before a permit.",
       modelGerman:
-        "Fragen zu geistiger Gesundheit / Krankheit stehen neben dem Screening zu häuslicher Gewalt und einer Überprüfung des kriminellen Hintergrunds, damit Risiken sachlich bewertet werden.",
+        "Das Formular fragt nach geistiger Gesundheit / Krankheit und häuslicher Gewalt vor einer Erlaubnis.",
       meaningOptionsDe: [
         "Geistige Gesundheit / Krankheit",
         "Häusliche Gewalt",
         "Jagdlizenz",
         "Schießtraining",
       ],
-      ownSentenceHint: "Open with **mental health** + slash + **illness**; add **domestic violence** + **background checks**.",
+      ownSentenceHint: "form + two screening topics + permit.",
       difficulty: 3,
     },
   },
@@ -425,22 +397,20 @@ export const VOCABULARY: VocabEntry[] = [
     en: "(safe) gun storage",
     de: "(sichere) Verwahrung von Waffen",
     sentence: {
-      example:
-        "Statutes link {{w}} with the duty to keep a gun safely, separate ammunition, and a locker whenever minors share the home.",
-      gap: "Statutes link ___ with the duty to keep a gun safely, separate ammunition, and a locker whenever minors share the home.",
+      example: "The law links {{w}} with a locker and separate ammunition.",
+      gap: "The law links ___ with a locker and separate ammunition.",
       gapAnswer: "safe gun storage",
       gapAliases: ["gun storage", "(safe) gun storage"],
-      modelEnglish:
-        "Statutes link (safe) gun storage with the duty to keep a gun safely, separate ammunition, and a locker whenever minors share the home.",
+      modelEnglish: "The law links (safe) gun storage with a locker and separate ammunition.",
       modelGerman:
-        "Gesetze verknüpfen die (sichere) Verwahrung von Waffen mit der Pflicht, eine Waffe sicher zu verwahren, Munition getrennt aufzubewahren und einen Spind bzw. ein Schließfach zu nutzen, wenn Minderjährige im Haushalt leben.",
+        "Das Gesetz verbindet die (sichere) Verwahrung von Waffen mit einem Spind bzw. Schließfach und getrennter Munition.",
       meaningOptionsDe: [
         "(sichere) Verwahrung von Waffen",
         "Einzelhandelsgeschäft",
         "Schießtraining",
         "Hintergrundprüfung",
       ],
-      ownSentenceHint: "**To keep a gun safely**, **ammunition**, **locker** in one rule sentence.",
+      ownSentenceHint: "link + storage + locker + ammunition.",
       difficulty: 2,
     },
   },
@@ -449,22 +419,21 @@ export const VOCABULARY: VocabEntry[] = [
     en: "to store smth.",
     de: "Etw. Verwahren",
     sentence: {
-      example:
-        "Trainees must show how {{w}}—ammunition apart, firearms in a locker—matches (safe) gun storage rules.",
-      gap: "Trainees must show how ___—ammunition apart, firearms in a locker—matches (safe) gun storage rules.",
+      example: "You must show how {{w}} — for example, ammunition apart from the firearm in a locker.",
+      gap: "You must show how ___ — for example, ammunition apart from the firearm in a locker.",
       gapAnswer: "to store smth.",
       gapAliases: ["to store something", "store something"],
       modelEnglish:
-        "Trainees must show how to store smth.—ammunition apart, firearms in a locker—matches (safe) gun storage rules.",
+        "You must show how to store smth. — for example, ammunition apart from the firearm in a locker.",
       modelGerman:
-        "Auszubildende müssen zeigen, wie man etw. verwahrt — Munition getrennt, Schusswaffen im Spind bzw. Schließfach — gemäß den Regeln zur (sicheren) Verwahrung von Waffen.",
+        "Man muss zeigen, wie man etw. verwahrt — z. B. Munition getrennt von der Schusswaffe im Spind bzw. Schließfach.",
       meaningOptionsDe: [
         "Etw. Verwahren",
         "Etw. verkaufen",
         "Etw. zerlegen",
         "Etw. versteigern",
       ],
-      ownSentenceHint: "**Ammunition**, **firearm**, **locker**, **(safe) gun storage**.",
+      ownSentenceHint: "how + list phrase + locker + ammunition + firearm.",
       difficulty: 2,
     },
   },
@@ -473,21 +442,19 @@ export const VOCABULARY: VocabEntry[] = [
     en: "locker",
     de: "Spind, Schließfach",
     sentence: {
-      example:
-        "On ranges, firearms stay in a secure {{w}} while ammunition is issued separately under rules tied to (un)announced inspections.",
-      gap: "On ranges, firearms stay in a secure ___ while ammunition is issued separately under rules tied to (un)announced inspections.",
+      example: "At the range, each firearm stays in a {{w}}; ammunition is given out separately.",
+      gap: "At the range, each firearm stays in a ___; ammunition is given out separately.",
       gapAnswer: "locker",
-      modelEnglish:
-        "On ranges, firearms stay in a secure locker while ammunition is issued separately under rules tied to (un)announced inspections.",
+      modelEnglish: "At the range, each firearm stays in a locker; ammunition is given out separately.",
       modelGerman:
-        "Auf Schießständen bleiben Schusswaffen in einem Spind bzw. Schließfach, während Munition separat ausgegeben wird — nach Regeln, die mit (un)angemeldeter Durchsuchung zusammenhängen.",
+        "Auf dem Stand bleibt jede Schusswaffe im Spind bzw. Schließfach; Munition wird separat ausgegeben.",
       meaningOptionsDe: [
         "Spind, Schließfach",
         "Schusswaffe",
         "Munition",
         "Schießclub",
       ],
-      ownSentenceHint: "**Firearm**, **ammunition**, **(un)announced inspections**.",
+      ownSentenceHint: "firearm + locker + ammunition.",
       difficulty: 2,
     },
   },
@@ -496,16 +463,15 @@ export const VOCABULARY: VocabEntry[] = [
     en: "ammunition",
     de: "Munition",
     sentence: {
-      example:
-        "{{w}} must stay apart from every firearm and handgun / pistol under (safe) gun storage guidance, especially if (un)announced inspections are likely.",
-      gap: "___ must stay apart from every firearm and handgun / pistol under (safe) gun storage guidance, especially if (un)announced inspections are likely.",
+      example: "{{w}} must stay away from the firearm and the handgun / pistol under (safe) gun storage rules.",
+      gap: "___ must stay away from the firearm and the handgun / pistol under (safe) gun storage rules.",
       gapAnswer: "ammunition",
       modelEnglish:
-        "Ammunition must stay apart from every firearm and handgun / pistol under (safe) gun storage guidance, especially if (un)announced inspections are likely.",
+        "Ammunition must stay away from the firearm and the handgun / pistol under (safe) gun storage rules.",
       modelGerman:
-        "Munition muss getrennt von jeder Schusswaffe und Handfeuerwaffe bleiben — nach den Vorgaben zur (sicheren) Verwahrung von Waffen, besonders wenn (un)angemeldete Durchsuchung droht.",
+        "Munition muss getrennt von der Schusswaffe und der Handfeuerwaffe bleiben — nach den Regeln zur (sicheren) Verwahrung von Waffen.",
       meaningOptionsDe: ["Munition", "Lizenz", "Verwahrung", "Durchsuchung"],
-      ownSentenceHint: "**Firearm**, **handgun / pistol**, **(safe) gun storage**, **(un)announced inspections**.",
+      ownSentenceHint: "Start with Ammunition + firearm + storage rules.",
       difficulty: 2,
     },
   },
@@ -514,9 +480,8 @@ export const VOCABULARY: VocabEntry[] = [
     en: "(un)announced inspections",
     de: "(un)angemeldete Durchsuchung",
     sentence: {
-      example:
-        "Licence holders should expect {{w}} where officers are allowed to inspect smth. on site and compare a certificate with the permit file.",
-      gap: "Licence holders should expect ___ where officers are allowed to inspect smth. on site and compare a certificate with the permit file.",
+      example: "Permit holders should expect {{w}} where officers compare a certificate with the file.",
+      gap: "Permit holders should expect ___ where officers compare a certificate with the file.",
       gapAnswer: "unannounced inspections",
       gapAliases: [
         "announced inspections",
@@ -524,16 +489,16 @@ export const VOCABULARY: VocabEntry[] = [
         "inspections",
       ],
       modelEnglish:
-        "Licence holders should expect (un)announced inspections where officers are allowed to inspect smth. on site and compare a certificate with the permit file.",
+        "Permit holders should expect (un)announced inspections where officers compare a certificate with the file.",
       modelGerman:
-        "Lizenzinhaber müssen mit einer (un)angemeldeten Durchsuchung rechnen, wenn Beamte vor Ort etw. durchsuchen und ein Zertifikat mit der Erlaubnisakte abgleichen.",
+        "Lizenzinhaber müssen mit einer (un)angemeldeten Durchsuchung rechnen, bei der Beamte ein Zertifikat mit der Akte vergleichen.",
       meaningOptionsDe: [
         "(un)angemeldete Durchsuchung",
         "Hintergrundprüfung",
         "Verurteilung",
         "Schießtraining",
       ],
-      ownSentenceHint: "**To inspect smth.** on site + **certificate** + **permit**.",
+      ownSentenceHint: "expect + inspections + certificate + permit file.",
       difficulty: 3,
     },
   },
@@ -542,22 +507,21 @@ export const VOCABULARY: VocabEntry[] = [
     en: "to inspect smth.",
     de: "Etw. durchsuchen",
     sentence: {
-      example:
-        "During (un)announced inspections, inspectors are empowered {{w}}—cabinet, locker, records—if diligence duties were breached and a certificate is missing.",
-      gap: "During (un)announced inspections, inspectors are empowered ___—cabinet, locker, records—if diligence duties were breached and a certificate is missing.",
+      example: "During (un)announced inspections, staff may be allowed {{w}} on site.",
+      gap: "During (un)announced inspections, staff may be allowed ___ on site.",
       gapAnswer: "to inspect smth.",
       gapAliases: ["to inspect something"],
       modelEnglish:
-        "During (un)announced inspections, inspectors are empowered to inspect smth.—cabinet, locker, records—if diligence duties were breached and a certificate is missing.",
+        "During (un)announced inspections, staff may be allowed to inspect smth. on site.",
       modelGerman:
-        "Bei einer (un)angemeldeten Durchsuchung dürfen Prüfer etw. durchsuchen — Schrank, Spind bzw. Schließfach, Akten — wenn Sorgfaltspflichten verletzt wurden und ein Zertifikat fehlt.",
+        "Bei einer (un)angemeldeten Durchsuchung dürfen Mitarbeiter vor Ort vielleicht etw. durchsuchen.",
       meaningOptionsDe: [
         "Etw. durchsuchen",
         "Etw. verkaufen",
         "Etw. lagern",
         "Etw. genehmigen",
       ],
-      ownSentenceHint: "**(un)announced inspections**, **locker**, **diligence**, **certificate**.",
+      ownSentenceHint: "allowed + list phrase + inspections.",
       difficulty: 2,
     },
   },
@@ -566,22 +530,21 @@ export const VOCABULARY: VocabEntry[] = [
     en: "diligence / diligent",
     de: "Eifer/Sorgfalt – eifrig/sorgfältig",
     sentence: {
-      example:
-        "The audit praised her {{w}} in matching background checks data with retail store logs before anyone could obtain a gun or finish sales.",
-      gap: "The audit praised her ___ in matching background checks data with retail store logs before anyone could obtain a gun or finish sales.",
+      example: "The manager praised her {{w}} with background checks at the retail store.",
+      gap: "The manager praised her ___ with background checks at the retail store.",
       gapAnswer: "diligence",
       gapAliases: ["diligent", "diligence / diligent"],
       modelEnglish:
-        "The audit praised her diligence in matching background checks data with retail store logs before anyone could obtain a gun or finish sales.",
+        "The manager praised her diligence with background checks at the retail store.",
       modelGerman:
-        "Die Prüfung lobte ihre Sorgfalt beim Abgleich der Überprüfung des kriminellen Hintergrunds mit Kassenlogs im Einzelhandelsgeschäft, bevor jemand eine Waffe bekommt oder Verkäufe abschließt.",
+        "Die Führungskraft lobte ihre Sorgfalt bei der Überprüfung des kriminellen Hintergrunds im Einzelhandelsgeschäft.",
       meaningOptionsDe: [
         "Eifer/Sorgfalt – eifrig/sorgfältig",
         "Häusliche Gewalt",
         "Schusswaffe",
         "Einzelhandel",
       ],
-      ownSentenceHint: "**Background checks**, **retail store**, **to obtain a gun**.",
+      ownSentenceHint: "diligence + background checks + retail store.",
       difficulty: 2,
     },
   },
@@ -590,22 +553,20 @@ export const VOCABULARY: VocabEntry[] = [
     en: "to certify smth. / certificate",
     de: "Etw. belegen / Zertifikat",
     sentence: {
-      example:
-        "Graduates leave with a {{w}} that proves hours for a permit after background checks and a review of the shooting-course file.",
-      gap: "Graduates leave with a ___ that proves hours for a permit after background checks and a review of the shooting-course file.",
+      example: "You need a {{w}} from the club after training and background checks.",
+      gap: "You need a ___ from the club after training and background checks.",
       gapAnswer: "certificate",
       gapAliases: ["to certify smth. / certificate", "a certificate"],
-      modelEnglish:
-        "Graduates leave with a certificate that proves hours for a permit after background checks and a review of the shooting-course file.",
+      modelEnglish: "You need a certificate from the club after training and background checks.",
       modelGerman:
-        "Absolventen erhalten ein Zertifikat, das die Stunden für eine Erlaubnis belegt — nach Überprüfung des kriminellen Hintergrunds und einer Überprüfung der Schießkursakte.",
+        "Man braucht ein Zertifikat vom Club nach dem Training und der Überprüfung des kriminellen Hintergrunds.",
       meaningOptionsDe: [
         "Etw. belegen / Zertifikat",
         "Etw. durchsuchen",
         "Etw. verbieten",
         "Etw. zerlegen",
       ],
-      ownSentenceHint: "**Permit**, **background checks**, **review**.",
+      ownSentenceHint: "certificate + club + background checks.",
       difficulty: 2,
     },
   },
@@ -614,22 +575,21 @@ export const VOCABULARY: VocabEntry[] = [
     en: "permit / to permit smth.",
     de: "Erlaubnis / etw. erlauben",
     sentence: {
-      example:
-        "A valid {{w}} signals that the state will permit smth.—here to carry a gun—that the same statute would bar without paperwork and background checks.",
-      gap: "A valid ___ signals that the state will permit smth.—here to carry a gun—that the same statute would bar without paperwork and background checks.",
+      example: "A {{w}} means the state may permit smth. — for example, to carry a gun — if you pass background checks.",
+      gap: "A ___ means the state may permit smth. — for example, to carry a gun — if you pass background checks.",
       gapAnswer: "permit",
       gapAliases: ["permit / to permit smth."],
       modelEnglish:
-        "A valid permit signals that the state will permit smth.—here to carry a gun—that the same statute would bar without paperwork and background checks.",
+        "A permit means the state may permit smth. — for example, to carry a gun — if you pass background checks.",
       modelGerman:
-        "Eine gültige Erlaubnis signalisiert, dass der Staat etw. erlaubt — hier eine Waffe zu führen bzw. zu tragen — was er ohne Formulare und Überprüfung des kriminellen Hintergrunds nach demselben Gesetz verbieten würde.",
+        "Eine Erlaubnis heißt: Der Staat darf etw. erlauben — z. B. eine Waffe zu führen bzw. zu tragen — wenn man die Überprüfung des kriminellen Hintergrunds besteht.",
       meaningOptionsDe: [
         "Erlaubnis / etw. erlauben",
         "Verurteilung",
         "Durchsuchung",
         "Munition",
       ],
-      ownSentenceHint: "**Permit smth.** + **to carry a gun** + **background checks**.",
+      ownSentenceHint: "permit + permit smth. + to carry a gun + checks.",
       difficulty: 2,
     },
   },
@@ -638,22 +598,21 @@ export const VOCABULARY: VocabEntry[] = [
     en: "to outnumber smth.",
     de: "zahlenmäßig übertreffen",
     sentence: {
-      example:
-        "In some datasets, legal firearms may already {{w}} dark-market stockpiles after weak background checks at busy retail stores.",
-      gap: "In some datasets, legal firearms may already ___ dark-market stockpiles after weak background checks at busy retail stores.",
+      example: "In one study, legal firearms may already {{w}} like illegal stockpiles after weak background checks at retail stores.",
+      gap: "In one study, legal firearms may already ___ like illegal stockpiles after weak background checks at retail stores.",
       gapAnswer: "outnumber smth.",
       gapAliases: ["to outnumber smth.", "outnumber"],
       modelEnglish:
-        "In some datasets, legal firearms may already outnumber smth. like dark-market stockpiles after weak background checks at busy retail stores.",
+        "In one study, legal firearms may already outnumber smth. like illegal stockpiles after weak background checks at retail stores.",
       modelGerman:
-        "In manchen Datensätzen könnten legale Schusswaffen illegale Bestände schon zahlenmäßig übertreffen, wenn die Überprüfung des kriminellen Hintergrunds in vollen Einzelhandelsgeschäften schwach war.",
+        "In einer Studie könnten legale Schusswaffen schon zahlenmäßig übertreffen, wenn die Überprüfung des kriminellen Hintergrunds in Einzelhandelsgeschäften schwach war.",
       meaningOptionsDe: [
         "zahlenmäßig übertreffen",
         "etw. durchsuchen",
         "etw. verwahren",
         "etw. verbieten",
       ],
-      ownSentenceHint: "**Firearms**, **background checks**, **retail store** + comparative stockpiles.",
+      ownSentenceHint: "List phrase as verb chunk; add firearms + background checks.",
       difficulty: 3,
     },
   },
@@ -662,21 +621,20 @@ export const VOCABULARY: VocabEntry[] = [
     en: "to keep a gun safely",
     de: "Waffe sicher verwahren",
     sentence: {
-      example:
-        "Guidance links the obligation {{w}} with (safe) gun storage, separate ammunition, and a locker, especially after domestic violence concerns surface in background checks.",
-      gap: "Guidance links the obligation ___ with (safe) gun storage, separate ammunition, and a locker, especially after domestic violence concerns surface in background checks.",
+      example: "The rules say you have {{w}} at home and use (safe) gun storage with a locker.",
+      gap: "The rules say you have ___ at home and use (safe) gun storage with a locker.",
       gapAnswer: "to keep a gun safely",
       modelEnglish:
-        "Guidance links the obligation to keep a gun safely with (safe) gun storage, separate ammunition, and a locker, especially after domestic violence concerns surface in background checks.",
+        "The rules say you have to keep a gun safely at home and use (safe) gun storage with a locker.",
       modelGerman:
-        "Leitfäden verbinden die Pflicht, eine Waffe sicher zu verwahren, mit der (sicheren) Verwahrung von Waffen, getrennter Munition und einem Spind bzw. Schließfach — besonders wenn nach einer Überprüfung des kriminellen Hintergrunds Sorgen wegen häuslicher Gewalt auftauchen.",
+        "Die Regeln sagen: Man muss eine Waffe sicher verwahren und (sichere) Verwahrung von Waffen mit Spind bzw. Schließfach nutzen.",
       meaningOptionsDe: [
         "Waffe sicher verwahren",
         "Waffe öffentlich führen",
         "Waffe verkaufen",
         "Waffe zerlegen",
       ],
-      ownSentenceHint: "**(safe) gun storage**, **ammunition**, **locker**, **domestic violence**, **background checks**.",
+      ownSentenceHint: "must + phrase + (safe) gun storage + locker.",
       difficulty: 2,
     },
   },

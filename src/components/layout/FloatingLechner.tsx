@@ -64,6 +64,7 @@ export function FloatingLechner() {
           width={183}
           height={521}
           draggable={false}
+          loading="eager"
           className="pointer-events-none h-[5.25rem] w-full rounded-[1rem] border border-white/50 object-contain object-top dark:border-zinc-600/50 sm:h-[7.5rem] sm:rounded-[1.15rem]"
           sizes="(max-width: 640px) 56px, 80px"
         />
